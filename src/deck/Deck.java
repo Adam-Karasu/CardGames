@@ -34,20 +34,17 @@ public class Deck {
         cardDeck.remove(cardDeck.size() - 1);
     }
 
-    public String getTopCard() {
-        String topCard = "";
+    public void getTopCard() {
         Card card = cardDeck.get(cardDeck.size() - 1);
-        topCard = card.getRank() + " " + card.getSuit() + " " + card.getRank().getRank();
-        return topCard;
+        System.out.printf("%s %s %s \n", card.getRank(), card.getSuit(), card.getRank().getRank());
+
     }
 
-    @Override
-    public String toString(){
-        String deckContents = "";
+
+    public void showDeck(){
         for(Card item : cardDeck) {
-           deckContents +=item.getRank() + " " + item.getSuit() + " " + item.getRank().getRank() + " " + item.getRank().getAltRank() + "\n";
+            System.out.printf("%s %s %s %s \n", item.getRank() , item.getSuit() , item.getRank().getRank() , item.getRank().getAltRank());
         }
-        return deckContents;
     }
 
 }
