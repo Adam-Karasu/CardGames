@@ -2,6 +2,7 @@ package deck;
 
 import cards.Card;
 
+import javax.lang.model.element.Element;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,27 +11,53 @@ import java.util.List;
  */
 public class Deck {
 
-   static List<Card> cardDeck;
+    List<Card> cardDeck;
 
     public Deck() {
-
+        cardDeck = new ArrayList<>();
     }
 
-    public static  List<Card> createDeck() {
+    public List<Card> createDeck() {
         for (int i = 0; i < Card.Suit.values().length; i++) {
             for (int j = 0; j < Card.Rank.values().length; j++) {
-                cardDeck.add(new Card(Card.Rank.values()[j],Card.Suit.values()[i]));
+                cardDeck.add(new Card(Card.Rank.values()[j], Card.Suit.values()[i]));
             }
         }
         return cardDeck;
     }
 
-    public static void main(String[] args) {
-        cardDeck = new ArrayList<>();
-        createDeck();
-        for(Card item : cardDeck){
-            System.out.println(item.getRank() + " " + item.getSuit() + " " + item.getRank().getValue() + " " + item.getRank().getAltRank()) ;
-
-        }
+    public List<Card> getCardDeck() {
+        return cardDeck;
     }
+
+    public void removeTopCard() {
+        cardDeck.remove(cardDeck.size() - 1);
+    }
+
+    public String getTopCard() {
+        String topCard = "";
+        Card card = cardDeck.get(cardDeck.size() - 1);
+        topCard = card.getRank() + " " + card.getSuit() + " " + card.getRank().getRank();
+        return topCard;
+    }
+
+    @Override
+    public String toString(){
+        String deckContents = "";
+        for(Card item : cardDeck) {
+           deckContents +=item.getRank() + " " + item.getSuit() + " " + item.getRank().getRank() + " " + item.getRank().getAltRank() + "\n";
+        }
+        return deckContents;
+    }
+
 }
+
+
+//    public static void main(String[] args) {
+//        cardDeck = new ArrayList<>();
+//        createDeck();
+//        for(Card item : cardDeck){
+//            System.out.println(item.getRank() + " " + item.getSuit() + " " + item.getRank().getRank() + " " + item.getRank().getAltRank());
+//        }
+//    }
+

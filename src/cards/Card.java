@@ -9,7 +9,7 @@ public class Card {
         CLUB(0), SPADE(1), DIAMOND(2), HEART(3);
         int value;
 
-        private Suit(int value) {
+        Suit(int value) {
             this.value = value;
         }
     }
@@ -22,7 +22,6 @@ public class Card {
     }
 
 
-
     public Suit getSuit() {
         return suit;
     }
@@ -32,14 +31,16 @@ public class Card {
         int rank;
         int altRank;
 
-        private Rank(int rank) {
+        Rank(int rank) {
             this.rank = rank;
         }
-        private Rank(int rank, int altRank) {
+
+        Rank(int rank, int altRank) {
             this.rank = rank;
             this.altRank = altRank;
         }
-        public int getValue(){
+
+        public int getRank() {
             return rank;
         }
 
