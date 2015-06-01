@@ -21,7 +21,6 @@ public class Table implements HouseAction{
     @Override
     public void addPlayer(PlayerAction player) {
         players.add(player);
-        for(PlayerAction item: players){
-        }
+        player.setFreeToPlay();
     }
 }
