@@ -2,12 +2,13 @@ package deck;
 
 import cards.Card;
 
-import javax.lang.model.element.Element;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Murad on 27/05/2015.
+ *
+ * Deck is only responsible for creating its self.
  */
 public class Deck {
 
@@ -15,9 +16,10 @@ public class Deck {
 
     public Deck() {
         cardDeck = new ArrayList<>();
+        createDeck();
     }
 
-    public List<Card> createDeck() {
+    private List<Card> createDeck() {
         for (int i = 0; i < Card.Suit.values().length; i++) {
             for (int j = 0; j < Card.Rank.values().length; j++) {
                 cardDeck.add(new Card(Card.Rank.values()[j], Card.Suit.values()[i]));
@@ -26,27 +28,9 @@ public class Deck {
         return cardDeck;
     }
 
-    public List<Card> getCardDeck() {
+    public List<Card> getCurrentDeck() {
         return cardDeck;
     }
-
-    public void removeTopCard() {
-        cardDeck.remove(cardDeck.size() - 1);
-    }
-
-    public void getTopCard() {
-        Card card = cardDeck.get(cardDeck.size() - 1);
-        System.out.printf("%s %s %s \n", card.getRank(), card.getSuit(), card.getRank().getRank());
-
-    }
-
-
-    public void showDeck(){
-        for(Card item : cardDeck) {
-            System.out.printf("%s %s %s %s \n", item.getRank() , item.getSuit() , item.getRank().getRank() , item.getRank().getAltRank());
-        }
-    }
-
 }
 
 
@@ -54,7 +38,7 @@ public class Deck {
 //        cardDeck = new ArrayList<>();
 //        createDeck();
 //        for(Card item : cardDeck){
-//            System.out.println(item.getRank() + " " + item.getSuit() + " " + item.getRank().getRank() + " " + item.getRank().getAltRank());
+//            System.out.println(item.getValue() + " " + item.getSuit() + " " + item.getValue().getValue() + " " + item.getValue().getAltRank());
 //        }
 //    }
 

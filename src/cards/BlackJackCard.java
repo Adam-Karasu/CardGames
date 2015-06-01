@@ -10,7 +10,7 @@ public class BlackJackCard extends Card {
     }
 
     public int getCardValue() {
-        int card = super.getRank().getRank();
+        int card = super.getRank().getValue();
         if (card == 1) {
             return 11;
         } else if (card < 10) {

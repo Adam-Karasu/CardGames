@@ -2,6 +2,9 @@ package cards;
 
 /**
  * Created by Murad on 27/05/2015.
+ *
+ * Provides the cards needed for a standard 52 cards deck, but does NOT
+ * create the deck
  */
 public class Card {
 
@@ -28,20 +31,20 @@ public class Card {
 
     public enum Rank {
         ACE(1, 10), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9), TEN(10), JOKER(11), QUEEN(12), KING(13);
-        int rank;
+        int value;
         int altRank;
 
-        Rank(int rank) {
-            this.rank = rank;
+        Rank(int value) {
+            this.value = value;
         }
 
-        Rank(int rank, int altRank) {
-            this.rank = rank;
+        Rank(int value, int altRank) {
+            this.value = value;
             this.altRank = altRank;
         }
 
-        public int getRank() {
-            return rank;
+        public int getValue() {
+            return value;
         }
 
         public int getAltRank() {
@@ -54,10 +57,10 @@ public class Card {
         this.rank = rank;
         this.suit = suit;
     }
-
-    public static void main(String[] args) {
-        Card spade = new Card(Rank.EIGHT, Suit.SPADE);
-
-        System.out.println(spade.getSuit() + " " + spade.getRank());
-    }
 }
+
+//    public static void main(String[] args) {
+//        Card spade = new Card(Rank.EIGHT, Suit.SPADE);
+//
+//        System.out.println(spade.getSuit() + " " + spade.getRank());
+//    }
