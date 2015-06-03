@@ -1,8 +1,8 @@
 package people;
 
 import cards.Card;
-import deck.Deck;
-import table.HouseAction;
+import cards.Deck;
+import cards.Hand;
 
 import java.util.*;
 
@@ -13,9 +13,16 @@ import java.util.*;
  *
  * The responsibility of this class is to manipulate a deck
  */
-public class Dealer {
+public class Dealer implements Player {
 
+    private boolean houseBust = false;
     private Deck deck = new Deck();
+    private Hand hand;
+
+    public Dealer(Deck deck) {
+
+        hand = new Hand();
+    }
 
     /**
      * assigns this dealer with a deck of cards
@@ -26,33 +33,23 @@ public class Dealer {
     }
 
     /**
-     * Removes the last dealt card from top of deck deck
+     * Removes the last dealt card from bottom of deck and adds to dealer hand
      */
-    private void removeTopCard() {
-        getDeck().remove(getDeck().size() - 1);
+    public void hit() {
+        Card cardToHand = deck.removeLastCard();
+        hand.addCardToHand(cardToHand);
     }
 
 
-    public void dealTopCard() {
-        removeTopCard();
-    }
+
 
     /**
      * cycle through this dealers deck and print cards not currently in players hand, and cards that have
      * not been discarded
      * Only cards that are available to be dealt are shown
      */
-    public void showDeck() {
-        for (Card item : deck.getCurrentDeck()) {
-            System.out.printf("%s %s %s %s \n", item.getRank(), item.getSuit(), item.getRank().getValue(), item.getRank().getAltRank());
-        }
-    }
+    public void viewCardsInHand(){
+        hand.getCardsInHand();
 
-    private List<Card> getDeck() {
-        return deck.getCurrentDeck();
-    }
-
-    public void shuffleList() {
-        Collections.shuffle(deck.getCurrentDeck());
     }
 }

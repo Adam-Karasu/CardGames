@@ -1,13 +1,12 @@
-package deck;
-
-import cards.Card;
+package cards;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by Murad on 27/05/2015.
- *
+ * <p>
  * Deck is only responsible for creating its self.
  */
 public class Deck {
@@ -28,17 +27,19 @@ public class Deck {
         return cardDeck;
     }
 
-    public List<Card> getCurrentDeck() {
-        return cardDeck;
+    public void shuffleList() {
+        Collections.shuffle(cardDeck);
+    }
+
+    public void showDeck( ) {
+        for (Card item : cardDeck) {
+            System.out.printf("%s \n", item.toString());
+        }
+    }
+
+    public Card removeLastCard() {
+        Card removedCard = cardDeck.remove(cardDeck.size() - 1);
+        return removedCard;
     }
 }
-
-
-//    public static void main(String[] args) {
-//        cardDeck = new ArrayList<>();
-//        createDeck();
-//        for(Card item : cardDeck){
-//            System.out.println(item.getValue() + " " + item.getSuit() + " " + item.getValue().getValue() + " " + item.getValue().getAltRank());
-//        }
-//    }
 

@@ -1,8 +1,11 @@
 package cards;
 
+import java.util.Collection;
+import java.util.Collections;
+
 /**
  * Created by Murad on 27/05/2015.
- *
+ * <p>
  * Provides the cards needed for a standard 52 cards deck, but does NOT
  * create the deck
  */
@@ -57,10 +60,17 @@ public class Card {
         this.rank = rank;
         this.suit = suit;
     }
-}
 
-//    public static void main(String[] args) {
-//        Card spade = new Card(Rank.EIGHT, Suit.SPADE);
-//
-//        System.out.println(spade.getSuit() + " " + spade.getRank());
-//    }
+    @Override
+    public String toString() {
+        StringBuilder value = new StringBuilder();
+        value.append(this.getRank() + " ");
+        value.append(this.getSuit()  + " ");
+        value.append(this.getRank().getValue());
+        return value.toString();
+    }
+
+    public void shuffle(){
+
+    }
+}

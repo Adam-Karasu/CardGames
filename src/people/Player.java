@@ -1,11 +1,11 @@
 package people;
 
 /**
- * Created by Murad on 28/05/2015.
+ * Created by Murad on 01/06/2015.
  */
-public class Player extends Person implements PlayerAction{
 
-public void setFreeToPlay(){
-    freeToPlay  = true;
-}
+//
+public interface Player {
+     void hit();
+     void viewCardsInHand();
 }
