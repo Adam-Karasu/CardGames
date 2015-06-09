@@ -1,7 +1,5 @@
 package cards;
 
-import people.Person;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +9,35 @@ import java.util.List;
 public class Hand {
 
     private List<Card> hand;
+    private int handValue;
 
-
-    public Hand() {
+    public void setUpHand(){
         hand = new ArrayList<>();
     }
 
+    public Hand() {
+
+    }
+
+    public int getHandValue() {
+        return handValue;
+    }
+
+    public boolean isAce(Card card){
+        if(card.getRank() == Card.Rank.ACE){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void addCardToHand(Card card){
+
+        if(isAce(card) && handValue > 10){
+            handValue += card.getRank().getAltRank();
+        } else {
+            handValue += card.getRank().getValue();
+        }
         hand.add(card);
     }
 

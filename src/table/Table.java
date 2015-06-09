@@ -1,9 +1,11 @@
 package table;
 
+import cards.Card;
+import cards.Deck;
 import people.Dealer;
+import people.GameAction;
 import people.Player;
 
-import java.util.List;
 
 /**
  * Created by Murad on 01/06/2015.
@@ -11,20 +13,32 @@ import java.util.List;
 
 //TODO Add functionality to allow more than one player to bet against the dealer
 
-//TODO - add Pub/Sub pattern. House holds Customer Subscribers, players are notified of their upcoming turn
+//TODO - add Pub/Sub pattern. House holds Player Subscribers, gameActions are notified of their upcoming turn
 
-public class Table implements HouseAction{
 
-    Dealer dealer;
-    List<Player> players;
+/**
+ * Table only knows about the interface that players use, this way new types of players can
+ * always be added later
+ *
+ *
+ */
+public class Table {
 
-    public Table(Dealer dealer) {
-        this.dealer = dealer;
+    Deck deck;
+
+    public Table( Deck deck) {
+
+        this.deck = deck;
     }
 
-    @Override
-    public void addPlayer(Player player) {
-        players.add(player);
-    
+    public void shuffleDeck(){
+        deck.shuffleList();
+    }
+    public Card hit(GameAction player){
+        Card cardToHand = deck.removeLastCard();
+        player.addToPlayerHand(cardToHand);
+
+        return cardToHand;
+
     }
 }

@@ -4,8 +4,6 @@ import cards.Card;
 import cards.Deck;
 import cards.Hand;
 
-import java.util.*;
-
 /**
  * Created by Murad on 28/05/2015.q
  *
@@ -13,33 +11,17 @@ import java.util.*;
  *
  * The responsibility of this class is to manipulate a deck
  */
-public class Dealer implements Player {
+public class Dealer implements GameAction {
 
     private boolean houseBust = false;
-    private Deck deck = new Deck();
+
     private Hand hand;
 
-    public Dealer(Deck deck) {
+
+    public Dealer() {
 
         hand = new Hand();
     }
-
-    /**
-     * assigns this dealer with a deck of cards
-     * @param deck
-     */
-    public void assignDealerADeck(Deck deck) {
-        this.deck = deck;
-    }
-
-    /**
-     * Removes the last dealt card from bottom of deck and adds to dealer hand
-     */
-    public void hit() {
-        Card cardToHand = deck.removeLastCard();
-        hand.addCardToHand(cardToHand);
-    }
-
 
 
 
@@ -51,5 +33,10 @@ public class Dealer implements Player {
     public void viewCardsInHand(){
         hand.getCardsInHand();
 
+    }
+
+    @Override
+    public void addToPlayerHand(Card card){
+        hand.addCardToHand(card);
     }
 }

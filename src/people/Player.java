@@ -1,11 +1,33 @@
 package people;
 
-/**
- * Created by Murad on 01/06/2015.
- */
+import cards.Card;
+import cards.Hand;
 
-//
-public interface Player {
-     void hit();
-     void viewCardsInHand();
+/**
+ * Created by Murad on 28/05/2015.
+ */
+public class Player implements GameAction {
+
+
+
+    private Hand hand;
+
+    public Player() {
+        hand = new Hand();
+        hand.setUpHand();
+    }
+
+
+  public void viewCards() {
+    hand.getCardsInHand();
+    }
+    public String showValueOfHand(){
+       return "Value of Player Hand: " + hand.getHandValue() + "\n";
+    }
+
+
+    @Override
+    public void addToPlayerHand(Card card){
+        hand.addCardToHand(card);
+    }
 }
