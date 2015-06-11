@@ -39,4 +39,14 @@ public class Dealer implements GameAction {
     public void addToPlayerHand(Card card){
         hand.addCardToHand(card);
     }
+
+    @Override
+    public String showValueOfHand() {
+        return null;
+    }
+
+    @Override
+    public void viewCards() {
+
+    }
 }

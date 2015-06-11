@@ -22,13 +22,12 @@ import java.util.Scanner;
  * BlackJackTable only knows about the interface that players use, this way new types of players can
  * always be added later
  */
-public class BlackJackTable extends BlackJackAlgorithm {
+public class BlackJackTable {
 
     Deck deck;
     private Scanner scan = new Scanner(System.in);
 
     public BlackJackTable(Deck deck) {
-
         this.deck = deck;
     }
 
@@ -37,80 +36,73 @@ public class BlackJackTable extends BlackJackAlgorithm {
         deck.shuffleList();
     }
 
-    public void shuffleDeck() {
-        deck.shuffleList();
-    }
-
-
-    public Card hit(GameAction player) {
+    private Card hit(GameAction player) {
         Card cardToHand = deck.removeLastCard();
         player.addToPlayerHand(cardToHand);
-
+        System.out.print(player.showValueOfHand());
+        player.viewCards();
         return cardToHand;
+    }
+
+    private void stand(GameAction player){
 
     }
 
-    public void playerAction2(Player player) {
+    private void insurance(GameAction player){
+
+    }
+
+    private void split(GameAction player){
+
+    }
+
+    private void doubleDown(GameAction player){
+
+    }
+
+    public void startGame(GameAction player) {
         String choice = "";
-        while (true) {
+        boolean stop = false;
+        do {
             choice = scan.nextLine();
             choice = choice.toLowerCase();
-            if (choice.equals("hit")) {
-                hit(player);
-                System.out.print(player.showValueOfHand());
-                player.viewCards();
-            } else {
-                break;
+            switch (choice){
+                case "hit":
+                    hit(player);
+                    break;
+                case "stand":
+            //        stand(player);
+                    break;
+                case "insurance":
+            //        insurance(player);
+                    break;
+                case "split":
+           //         split(player);
+                    break;
+                case "double down":
+                    //         doubleDown(player);
+                    break;
+                default:
+                    stop = true;
+                    break;
             }
-        }
-    }
-
-    public void playerAction(Player player) {
-        String choice = "";
-        choice = scan.nextLine();
-        choice = choice.toLowerCase();
-        while (player.getValueOfHand() < 17) {
-            if (choice.equals("hit")) {
-                hit(player);
-
-            } else {
-                return;
-            }
-        }
-    }
-
-    public void play(Player player) {
-        while (player.getValueOfHand() < 17) {
-            hit(player);
-        }
-    }
-
-
-
-    @Override
-    protected void start() {
-        System.out.println("do you want to hit?");
-    }
-
-    @Override
-    protected boolean requestAnotherHit() {
-        String choice = "";
-        choice = scan.nextLine();
-        choice = choice.toLowerCase();
-        if (choice.equals("hit")) {
-            return true;
-        }
-        return false;
-    }
-
-
-    protected void makePlay() {
-
-    }
-
-    @Override
-    protected void end() {
-        System.out.println("end");
+        } while(!stop);
     }
 }
 
+
+
+
+//    public void playerAction(Player player) {
+//        String choice = "";
+//        choice = scan.nextLine();
+//        choice = choice.toLowerCase();
+//        while (player.getValueOfHand() < 17) {
+//            if (choice.equals("hit")) {
+//                hit(player);
+//
+//            } else {
+//                return;
+//            }
+//        }
+//    }

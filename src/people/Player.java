@@ -6,6 +6,10 @@ import cards.Hand;
 /**
  * Created by Murad on 28/05/2015.
  */
+
+/**
+ * TODO viewCards and showValueOfHand rolled into one toString method
+ */
 public class Player implements GameAction {
 
 
@@ -32,7 +36,7 @@ public class Player implements GameAction {
     }
 
     public String showValueOfHand() {
-        return "Value of Player Hand: " + hand.getHandValue() + "\n";
+        return "Player Hand: " + hand.getHandValue() + "\n";
     }
 
 

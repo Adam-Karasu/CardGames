@@ -10,4 +10,6 @@ import cards.Card;
 public interface GameAction {
 
     void addToPlayerHand(Card card);
+    String showValueOfHand();
+    void viewCards();
 }

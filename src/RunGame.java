@@ -26,7 +26,7 @@ public class RunGame {
         dealer = new Dealer();
         player = new Player();
 
-        blackJackTable.playerAction2(player);
+        blackJackTable.startGame(player);
 
 
     }
