@@ -9,6 +9,5 @@ import cards.Card;
 //
 public interface GameAction {
 
-    int handValue = 0;
     void addToPlayerHand(Card card);
 }

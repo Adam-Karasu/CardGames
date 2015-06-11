@@ -9,6 +9,13 @@ import java.util.Collections;
  * Provides the cards needed for a standard 52 cards deck, but does NOT
  * create the deck
  */
+
+/**
+ * Using Enums allows any additional card games that require different values for different card
+ * to be contained in this class. Aviods sprawling classes by only needing a new value, new constructor
+ * and new getter to provide you with a variable types of decks/ could make better use of OOP with this
+ * beign the base class and other classes making specific blackjack, poker, ect classes
+ */
 public class Card {
 
     public enum Suit {
@@ -68,9 +75,5 @@ public class Card {
         value.append(this.getSuit()  + " ");
         value.append(this.getRank().getValue());
         return value.toString();
-    }
-
-    public void shuffle(){
-
     }
 }

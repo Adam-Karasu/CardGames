@@ -9,25 +9,35 @@ import cards.Hand;
 public class Player implements GameAction {
 
 
-
+    private boolean bust = false;
     private Hand hand;
 
+    public void setLost() {
+        bust = true;
+    }
+
     public Player() {
+
         hand = new Hand();
         hand.setUpHand();
     }
 
 
-  public void viewCards() {
-    hand.getCardsInHand();
+    public void viewCards() {
+        hand.getCardsInHand();
     }
-    public String showValueOfHand(){
-       return "Value of Player Hand: " + hand.getHandValue() + "\n";
+
+    public int getValueOfHand() {
+        return  hand.getHandValue();
+    }
+
+    public String showValueOfHand() {
+        return "Value of Player Hand: " + hand.getHandValue() + "\n";
     }
 
 
     @Override
-    public void addToPlayerHand(Card card){
+    public void addToPlayerHand(Card card) {
         hand.addCardToHand(card);
     }
 }
